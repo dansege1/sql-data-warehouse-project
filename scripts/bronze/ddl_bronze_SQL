@@ -1,0 +1,80 @@
+/*
+=============================================================
+DDL Script: create bronze table
+============================================================
+Script Purpose:
+ This script creates tables in the 'bronze' schema, dropping existing tables
+ if they already exist.
+	Run this script to re-define the DDL structure of 'bronze'Tables
+ ==========================================================
+ */
+ IF OBJECT_ID('bronze.crm_cust_info', 'U') IS NOT NULL
+DROP TABLE IF EXISTS bronze.crm_cust_info;
+
+GO
+
+CREATE TABLE bronze.crm_cust_info(
+	cst_id INT,
+	cst_key VARCHAR (MAX),
+	cst_firstname VARCHAR (MAX),
+	cst_lastname VARCHAR (MAX),
+	cst_marital_status VARCHAR (MAX),
+	cst_gndr VARCHAR (MAX),
+	cst_create_date DATE
+
+);
+
+DROP TABLE IF EXISTS bronze.crm_prd_info;
+CREATE TABLE bronze.crm_prd_info(
+	prd_id			INT,
+	prd_key			VARCHAR(50),
+	prd_nm			VARCHAR(255),
+	prd_cost		INT,
+	prd_line		VARCHAR(10),
+	prd_start_dt	DATETIME,
+	prd_end_dt		DATETIME
+
+);
+
+
+
+DROP TABLE IF EXISTS bronze.crm_sales_info;
+CREATE TABLE bronze.crm_Sales_details(
+	sls_ord_num VARCHAR(MAX),
+	sls_prd_key VARCHAR(MAX),
+	sls_cus_id	INT,
+	sls_order_dt INT,
+	sls_ship_dt  INT,
+	sls_due_dt	 INT,
+	sls_sales	INT,
+	sls_quantity INT,
+	sls_price    INT
+);
+
+
+DROP TABLE IF EXISTS bronze.erp_loc_a101;
+CREATE TABLE bronze.erp_loc_a101(
+	cid VARCHAR(MAX),
+	cntry VARCHAR (MAX)
+
+	);
+
+DROP TABLE IF EXISTS bronze.cust_az12;
+CREATE TABLE bronze.erp_cust_az12(
+	cid VARCHAR(MAX),
+	bdate DATE,
+	gen VARCHAR (MAX)
+	
+);
+
+
+DROP TABLE IF EXISTS bronze.erp_px_cat_giv2;
+CREATE TABLE bronze.erp_px_cat_giv2(
+	id 	VARCHAR(MAX),
+	cat	 VARCHAR (MAX),
+	subcat VARCHAR (MAX),
+	maintenance VARCHAR(MAX)
+	
+);
+
+GO

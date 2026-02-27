@@ -38,17 +38,17 @@ CREATE TABLE bronze.crm_prd_info(
 
 
 
-DROP TABLE IF EXISTS bronze.crm_sales_info;
-CREATE TABLE bronze.crm_Sales_details(
-	sls_ord_num VARCHAR(MAX),
-	sls_prd_key VARCHAR(MAX),
-	sls_cus_id	INT,
-	sls_order_dt INT,
-	sls_ship_dt  INT,
-	sls_due_dt	 INT,
-	sls_sales	INT,
-	sls_quantity INT,
-	sls_price    INT
+DROP TABLE IF EXISTS bronze.crm_sales_details;
+CREATE TABLE bronze.crm_sales_details(
+	sls_ord_num VARCHAR(50),
+	sls_prd_key VARCHAR(50),
+	sls_cus_id	VARCHAR(50),
+	sls_order_dt VARCHAR(50),
+	sls_ship_dt  VARCHAR(50),
+	sls_due_dt	 VARCHAR(50),
+	sls_sales	VARCHAR(50),
+	sls_quantity VARCHAR(50),
+	sls_price    VARCHAR(50)
 );
 
 
@@ -68,8 +68,8 @@ CREATE TABLE bronze.erp_cust_az12(
 );
 
 
-DROP TABLE IF EXISTS bronze.erp_px_cat_giv2;
-CREATE TABLE bronze.erp_px_cat_giv2(
+DROP TABLE IF EXISTS bronze.erp_px_cat_g1v2;
+CREATE TABLE bronze.erp_px_cat_g1v2(
 	id 	VARCHAR(MAX),
 	cat	 VARCHAR (MAX),
 	subcat VARCHAR (MAX),
@@ -78,3 +78,6 @@ CREATE TABLE bronze.erp_px_cat_giv2(
 );
 
 GO
+
+
+

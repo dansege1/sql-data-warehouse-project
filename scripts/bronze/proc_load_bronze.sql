@@ -18,8 +18,6 @@ Parameters:
 =====================================================
 */
 
-EXEC bronze.load_bronze;
-
 USE Datawarehouse;
 GO
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
@@ -39,14 +37,15 @@ BEGIN
 		TRUNCATE TABLE bronze.crm_cust_info;
 
 		PRINT'>> Inserting Data into: bronze.crm_cust_info';
+	
 		BULK INSERT bronze.crm_cust_info
-		FROM 'C:\Users\Administrator\Documents\source_crm\cust_info.csv'
+		FROM 'C:\SQLData\source_crm\cust_info.csv'
 		WITH (
+			FORMAT = 'CSV',
 			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
+			FIELDQUOTE = '"',
 			TABLOCK
-
-		);
+	);
 		SET @end_time = GETDATE();
 		PRINT '>> Load Duration: '+CAST( DATEDIFF(second, @start_time, @end_time) AS VARCHAR) + ' seconds';
 		PRINT '--------------------------------';
@@ -58,11 +57,10 @@ BEGIN
 
 		PRINT'>> Inserting Data into: bronze.crm_prd_info';
 		BULK INSERT bronze.crm_prd_info
-		FROM 'C:\Users\Administrator\Documents\source_crm\prd_info.csv'
+		FROM 'C:\SQLData\source_crm\prd_info.csv'
 		WITH (
+			FORMAT = 'CSV',
 			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
-			ROWTERMINATOR = '\n',
 			FIELDQUOTE = '"',
 			TABLOCK
 		);
@@ -77,11 +75,11 @@ BEGIN
 
 		PRINT'>> Inserting Data into: bronze.crm_sales_details';
 		BULK INSERT bronze.crm_sales_details
-		FROM 'C:\Users\Administrator\Documents\source_crm\sales_details.csv'
-		"C:\Users\Administrator\Documents\source_crm\sales_details.csv"
+		FROM 'C:\SQLData\source_crm\sales_details.csv'
 		WITH (
+			FORMAT = 'CSV',
 			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
+			FIELDQUOTE = '"',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -100,10 +98,11 @@ BEGIN
 
 		PRINT'>> Inserting Data into: bronze.erp_loc_a101';
 		BULK INSERT bronze.erp_loc_a101
-		FROM 'C:\Users\Administrator\Documents\source_erp\loc_a101.csv'
+		FROM 'C:\SQLData\source_erp\LOC_A101.csv'
 		WITH (
+			FORMAT = 'CSV',
 			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
+			FIELDQUOTE = '"',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -117,10 +116,11 @@ BEGIN
 
 		PRINT'>> Inserting Data into: bronze.erp_cust_az12';
 		BULK INSERT bronze.erp_cust_az12
-		FROM 'C:\Users\Administrator\Documents\source_erp\cust_az12.csv'
+		FROM 'C:\SQLData\source_erp\CUST_AZ12.csv'
 		WITH (
+			FORMAT = 'CSV',
 			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
+			FIELDQUOTE = '"',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -129,15 +129,16 @@ BEGIN
 
 
 		SET @start_time = GETDATE();
-		PRINT'>> Truncating Table: bronze.erp_px_cat_giv2';
-		TRUNCATE TABLE bronze.erp_px_cat_giv2;
+		PRINT'>> Truncating Table: bronze.erp_px_cat_g1v2';
+		TRUNCATE TABLE bronze.erp_px_cat_g1v2;
 
-		PRINT'>> Inserting Data into: bronze.erp_px_cat_giv2';
-		BULK INSERT bronze.erp_px_cat_giv2
-		FROM 'C:\Users\Administrator\Documents\source_erp\PX_CAT_G1V2.csv'
+		PRINT'>> Inserting Data into: bronze.erp_px_cat_g1v2';
+		BULK INSERT bronze.erp_px_cat_g1v2
+		FROM 'C:\SQLData\source_erp\PX_CAT_G1V2.csv'
 		WITH (
+			FORMAT = 'CSV',
 			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
+			FIELDQUOTE = '"',
 			TABLOCK
 		);
 		SET @end_time = GETDATE();
@@ -154,4 +155,6 @@ BEGIN
 		PRINT '============================================='
 	END CATCH
 END
+
+
 

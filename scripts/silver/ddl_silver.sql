@@ -92,13 +92,13 @@ CREATE TABLE silver.erp_loc_a101(
 
 GO
 
-IF OBJECT_ID('silver.erp_px_cat_giv2', 'U') IS NOT NULL
-	DROP TABLE IF EXISTS silver.erp_px_cat_giv2;
+IF OBJECT_ID('silver.erp_px_cat_g1v2', 'U') IS NOT NULL
+	DROP TABLE IF EXISTS silver.erp_px_cat_g1v2;
 
 
 GO
 
-CREATE TABLE silver.erp_px_cat_giv2(
+CREATE TABLE silver.erp_px_cat_g1v2(
 	id VARCHAR(MAX),
 	cat VARCHAR (50),
 	subcat VARCHAR (50),

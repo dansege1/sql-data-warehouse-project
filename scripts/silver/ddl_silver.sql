@@ -8,6 +8,7 @@ Script Purpose:
  Run this script to re-define the DDL structure of 'bronze' Tables
  ==========================================================
  */
+ USE Datawarehouse;
  IF OBJECT_ID('silver.crm_cust_info', 'U') IS NOT NULL
 	DROP TABLE IF EXISTS silver.crm_cust_info;
 
@@ -37,7 +38,7 @@ CREATE TABLE silver.crm_prd_info(
 	prd_key			NVARCHAR(50),
 	prd_nm			NVARCHAR(255),
 	prd_cost		INT,
-	prd_line		NVARCHAR(10),
+	prd_line		NVARCHAR(50),
 	prd_start_dt	DATE,
 	prd_end_dt		DATE,
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
@@ -107,3 +108,5 @@ CREATE TABLE silver.erp_px_cat_g1v2(
 );
 
 GO
+
+select top 10 * from bronze.crm_prd_info;
